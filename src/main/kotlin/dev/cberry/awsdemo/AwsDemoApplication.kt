@@ -34,9 +34,11 @@ class MessageController {
 
     @GetMapping("/messages")
     fun getMessage(
-        @RequestParam(value = "id", defaultValue = "0")
+        @RequestParam(value = "id", defaultValue = "-1")
         id: String
-    ) = State.messageMap[id.toLongOrNull() ?: 0L]
+    ): Collection<Message?> =
+        if(id == "-1") State.messageMap.values
+        else listOf(State.messageMap[id.toLongOrNull() ?: 0L])
 }
 
 object State {
