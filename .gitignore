@@ -32,4 +32,4 @@ out/
 .vscode/
 
 ### custom ###
-.secrets
+*.secrets
